@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+
+const today = new Date().toLocaleDateString('en-US', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+
+const posts = (await getCollection('postsKo', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+---
+
+<BaseLayout title="Home" lang="ko" isHome={true}>
+  <div class="hero">
+    <h1 class="wordmark">HOGAN</h1>
+    <p class="today">{today}</p>
+  </div>
+
+  <div class="post-grid">
+    {
+      posts.map((post, i) => (
+        <PostCard
+          href={`/ko/${post.id}/`}
+          title={post.data.title}
+          description={post.data.description}
+          thumbnail={post.data.thumbnail}
+          date={post.data.date}
+          featured={i === 0}
+        />
+      ))
+    }
+  </div>
+</BaseLayout>

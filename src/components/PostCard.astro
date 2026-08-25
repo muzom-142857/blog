@@ -1,0 +1,22 @@
+---
+interface Props {
+  href: string;
+  title: string;
+  description?: string;
+  thumbnail?: string;
+  date: Date;
+  featured?: boolean;
+}
+
+const { href, title, description, thumbnail, date, featured = false } = Astro.props;
+const dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+
+<a class={`post-card ${featured ? 'featured' : ''}`} href={href}>
+  {thumbnail && <img class="thumb" src={thumbnail} alt="" loading="lazy" />}
+  <div class="body">
+    <p class="card-title">{title}</p>
+    {description && <p class="excerpt">{description}</p>}
+    <p class="meta">{dateStr}</p>
+  </div>
+</a>

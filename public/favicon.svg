@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap');
+      text { font-family: 'UnifrakturMaguntia', serif; }
+    </style>
+  </defs>
+  <text x="50%" y="52%" text-anchor="middle" dominant-baseline="central" font-size="52" fill="#c6008b">H</text>
+</svg>

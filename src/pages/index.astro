@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const today = new Date().toLocaleDateString('en-US', {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title="Home" lang="en" isHome={true}>
+  <div class="hero">
+    <h1 class="wordmark">HOGAN</h1>
+    <p class="today">{today}</p>
+    <div class="lang-links">
+      <a href="/en/">English</a>
+      <a href="/ko/">한국어</a>
+    </div>
+  </div>
+</BaseLayout>

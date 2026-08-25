@@ -1,0 +1,33 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('postsKo', ({ data }) => !data.draft);
+  const enPosts = await getCollection('postsEn', ({ data }) => !data.draft);
+  const enIds = new Set(enPosts.map((p) => p.id));
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post, altHref: enIds.has(post.id) ? `/en/${post.id}/` : undefined },
+  }));
+}
+
+const { post, altHref } = Astro.props;
+const { Content } = await render(post);
+const dateStr = post.data.date.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={post.data.title} lang="ko" description={post.data.description} altHref={altHref}>
+  <div class="article-header">
+    <h1>{post.data.title}</h1>
+    <p class="meta">{dateStr}</p>
+  </div>
+  {post.data.thumbnail && <img class="article-thumb" src={post.data.thumbnail} alt="" />}
+  <article class="content" data-lang="ko">
+    <Content />
+  </article>
+</BaseLayout>

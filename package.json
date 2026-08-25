@@ -1,0 +1,25 @@
+{
+  "name": "blog",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build && pagefind --site dist",
+    "preview": "astro preview",
+    "start": "node server.mjs",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^7.2.6",
+    "serve-handler": "^6.1.7"
+  },
+  "allowScripts": {
+    "esbuild": true
+  },
+  "devDependencies": {
+    "pagefind": "^1.5.2"
+  }
+}

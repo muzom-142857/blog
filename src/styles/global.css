@@ -1,0 +1,351 @@
+@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+@font-face {
+  font-family: 'RIDIBatang';
+  src: url('/fonts/RIDIBatang.woff') format('woff');
+  font-display: swap;
+}
+
+:root {
+  --bg: #e9e0c7;
+  --bg-card: #e0d4b2;
+  --fg: #111111;
+  --fg-dim: #57503f;
+  --border: rgba(0, 0, 0, 0.18);
+  --accent: #c6008b;
+  --content-width: 46rem;
+  --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-logo: 'UnifrakturMaguntia', serif;
+  --font-ko: 'RIDIBatang', 'Batang', serif;
+  --font-en: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --bg: #161513;
+    --bg-card: #201f1c;
+    --fg: #f2f2ee;
+    --fg-dim: #a8a49a;
+    --border: rgba(255, 255, 255, 0.14);
+  }
+}
+
+:root[data-theme='dark'] {
+  --bg: #161513;
+  --bg-card: #201f1c;
+  --fg: #f2f2ee;
+  --fg-dim: #a8a49a;
+  --border: rgba(255, 255, 255, 0.14);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-ui);
+  line-height: 1.6;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+a {
+  color: inherit;
+}
+
+.wrap {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* header */
+
+.site-header {
+  padding: 1.25rem 0 0.5rem;
+}
+
+.site-header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home-link {
+  font-family: var(--font-logo);
+  font-size: 1.5rem;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.header-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  font-size: 0.85rem;
+}
+
+.header-tools a {
+  text-decoration: none;
+  color: var(--fg-dim);
+}
+
+.header-tools a:hover {
+  color: var(--accent);
+}
+
+.theme-toggle,
+.lang-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  color: var(--fg);
+  cursor: pointer;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  padding: 0.3rem 0.6rem;
+  font-family: var(--font-ui);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.theme-toggle:hover,
+.lang-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* hero (home page) */
+
+.hero {
+  text-align: center;
+  padding: 3rem 0 2rem;
+}
+
+.hero .wordmark {
+  font-family: var(--font-logo);
+  font-size: clamp(3rem, 10vw, 5.5rem);
+  margin: 0;
+  letter-spacing: 0.02em;
+}
+
+.hero .today {
+  margin: 0.4rem 0 0;
+  font-size: 0.8rem;
+  color: var(--fg-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hero .lang-links {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.hero .lang-links a {
+  border: 1px solid var(--border);
+  border-radius: 0;
+  padding: 0.5rem 1.2rem;
+  text-decoration: none;
+}
+
+.hero .lang-links a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* search */
+
+.search-box {
+  margin: 1.5rem 0;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--bg-card);
+  color: var(--fg);
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* post grid */
+
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  margin: 1.5rem 0 3rem;
+}
+
+.post-card {
+  grid-column: span 1;
+  border-radius: 0;
+  overflow: hidden;
+  text-decoration: none;
+  color: var(--fg);
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  transition: background 0.1s ease;
+}
+
+.post-card:hover {
+  background: var(--bg);
+}
+
+.post-card.featured {
+  grid-column: span 2;
+}
+
+.post-card .thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  background: var(--border);
+}
+
+.post-card.featured .thumb {
+  aspect-ratio: 21 / 9;
+}
+
+.post-card .body {
+  padding: 0.8rem 0.9rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.post-card .card-title {
+  font-weight: 600;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.post-card.featured .card-title {
+  font-size: 1.7rem;
+}
+
+.post-card .excerpt {
+  font-size: 0.88rem;
+  color: var(--fg-dim);
+  margin: 0;
+  flex: 1;
+}
+
+.post-card .meta {
+  font-size: 0.75rem;
+  color: var(--fg-dim);
+  margin: 0;
+}
+
+@media (max-width: 640px) {
+  .post-grid {
+    grid-template-columns: 1fr;
+  }
+  .post-card.featured {
+    grid-column: span 1;
+  }
+}
+
+/* article */
+
+.article-header {
+  padding: 2rem 0 1rem;
+}
+
+.article-header h1 {
+  font-weight: 700;
+  font-size: 2.2rem;
+  margin: 0 0 0.4rem;
+}
+
+.article-header .meta {
+  color: var(--fg-dim);
+  font-size: 0.85rem;
+}
+
+.article-thumb {
+  width: 100%;
+  border-radius: 0;
+  margin: 1rem 0;
+  display: block;
+}
+
+html[lang='ko'] .article-header h1,
+html[lang='ko'] article.content,
+html[lang='ko'] .post-card .card-title {
+  font-family: var(--font-ko);
+}
+
+html[lang='en'] .article-header h1,
+html[lang='en'] article.content,
+html[lang='en'] .post-card .card-title {
+  font-family: var(--font-en);
+}
+
+article.content {
+  font-size: 1.02rem;
+  padding-bottom: 4rem;
+}
+
+article.content img,
+article.content video {
+  max-width: 100%;
+  border-radius: 0;
+}
+
+article.content a {
+  color: var(--accent);
+}
+
+article.content pre {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+article.content code {
+  font-family: var(--font-en);
+}
+
+article.content blockquote {
+  border-left: 3px solid var(--accent);
+  margin: 1rem 0;
+  padding: 0.2rem 1rem;
+  color: var(--fg-dim);
+}
+
+/* pagefind search widget */
+
+#search {
+  --pagefind-ui-primary: var(--accent);
+  --pagefind-ui-text: var(--fg);
+  --pagefind-ui-background: var(--bg);
+  --pagefind-ui-border: var(--border);
+  --pagefind-ui-font: var(--font-ui);
+  margin-bottom: 3rem;
+}
