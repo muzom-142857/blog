@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { withBase } from '../lib/url';
 
 interface Props {
   title: string;
@@ -10,10 +11,10 @@ interface Props {
 }
 
 const { title, lang, description = '', isHome = false, altHref } = Astro.props;
-const homeHref = `/${lang}/`;
-const searchHref = `/${lang}/search/`;
+const homeHref = withBase(`/${lang}/`);
+const searchHref = withBase(`/${lang}/search/`);
 const otherLang = lang === 'ko' ? 'en' : 'ko';
-const langHref = altHref ?? `/${otherLang}/`;
+const langHref = withBase(altHref ?? `/${otherLang}/`);
 ---
 
 <!doctype html>
@@ -23,7 +24,7 @@ const langHref = altHref ?? `/${otherLang}/`;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title} — HOGAN</title>
     {description && <meta name="description" content={description} />}
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href={withBase('/favicon.svg')} type="image/svg+xml" />
     <script is:inline>
       (function () {
         var saved = localStorage.getItem('theme');

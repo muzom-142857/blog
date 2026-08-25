@@ -1,4 +1,6 @@
 ---
+import { withBase } from '../lib/url';
+
 interface Props {
   href: string;
   title: string;
@@ -13,7 +15,7 @@ const dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'shor
 ---
 
 <a class={`post-card ${featured ? 'featured' : ''}`} href={href}>
-  {thumbnail && <img class="thumb" src={thumbnail} alt="" loading="lazy" />}
+  {thumbnail && <img class="thumb" src={withBase(thumbnail)} alt="" loading="lazy" />}
   <div class="body">
     <p class="card-title">{title}</p>
     {description && <p class="excerpt">{description}</p>}

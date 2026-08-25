@@ -2,7 +2,7 @@
 
 @font-face {
   font-family: 'RIDIBatang';
-  src: url('/fonts/RIDIBatang.woff') format('woff');
+  src: url('../fonts/RIDIBatang.woff') format('woff');
   font-display: swap;
 }
 

@@ -9,12 +9,10 @@
     "dev": "astro dev",
     "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
-    "start": "node server.mjs",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^7.2.6",
-    "serve-handler": "^6.1.7"
+    "astro": "^7.2.6"
   },
   "allowScripts": {
     "esbuild": true

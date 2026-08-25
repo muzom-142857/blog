@@ -2,10 +2,11 @@ backend:
   name: github
   repo: muzom-142857/blog
   branch: main
-  base_url: https://YOUR_RAILWAY_DOMAIN # TODO: fill in after first Railway deploy
-  auth_endpoint: auth
+  # no OAuth proxy running anywhere (site is static-only on GitHub Pages), so
+  # logging in from the live /admin/ page won't work. Use it locally instead:
+  # `npx decap-server` + `npm run dev`, writes straight to the filesystem.
 
-local_backend: true # lets `npx decap-server` run the CMS against your local filesystem, no GitHub auth needed
+local_backend: true
 
 media_folder: "public/uploads"
 public_folder: "/uploads"

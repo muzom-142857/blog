@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/url';
 
 const today = new Date().toLocaleDateString('en-US', {
   weekday: 'long',
@@ -14,8 +15,8 @@ const today = new Date().toLocaleDateString('en-US', {
     <h1 class="wordmark">HOGAN</h1>
     <p class="today">{today}</p>
     <div class="lang-links">
-      <a href="/en/">English</a>
-      <a href="/ko/">한국어</a>
+      <a href={withBase('/en/')}>English</a>
+      <a href={withBase('/ko/')}>한국어</a>
     </div>
   </div>
 </BaseLayout>
