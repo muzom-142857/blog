@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pirata+One&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 @font-face {
   font-family: 'RIDIBatang';
@@ -15,7 +15,7 @@
   --accent: #c6008b;
   --content-width: 46rem;
   --font-ui: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-logo: 'UnifrakturMaguntia', serif;
+  --font-logo: 'Pirata One', 'UnifrakturMaguntia', serif;
   --font-ko: 'RIDIBatang', 'Batang', serif;
   --font-en: 'JetBrains Mono', ui-monospace, monospace;
 }
@@ -238,13 +238,15 @@ a {
 }
 
 .post-card .card-title {
-  font-weight: 600;
-  font-size: 1.2rem;
+  font-family: var(--font-logo);
+  font-weight: 400;
+  font-size: 1.35rem;
+  letter-spacing: 0.01em;
   margin: 0;
 }
 
 .post-card.featured .card-title {
-  font-size: 1.7rem;
+  font-size: 1.9rem;
 }
 
 .post-card .excerpt {
@@ -276,8 +278,10 @@ a {
 }
 
 .article-header h1 {
-  font-weight: 700;
-  font-size: 2.2rem;
+  font-family: var(--font-logo);
+  font-weight: 400;
+  font-size: 2.6rem;
+  letter-spacing: 0.01em;
   margin: 0 0 0.4rem;
 }
 
@@ -293,15 +297,11 @@ a {
   display: block;
 }
 
-html[lang='ko'] .article-header h1,
-html[lang='ko'] article.content,
-html[lang='ko'] .post-card .card-title {
+html[lang='ko'] article.content {
   font-family: var(--font-ko);
 }
 
-html[lang='en'] .article-header h1,
-html[lang='en'] article.content,
-html[lang='en'] .post-card .card-title {
+html[lang='en'] article.content {
   font-family: var(--font-en);
 }
 
