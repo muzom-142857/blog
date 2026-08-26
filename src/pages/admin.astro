@@ -1,0 +1,65 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const REPO = 'muzom-142857/blog';
+const links = [
+  { label: 'New English post', href: `https://github.com/${REPO}/new/main/src/content/en/posts` },
+  { label: 'New Korean post', href: `https://github.com/${REPO}/new/main/src/content/ko/posts` },
+  { label: 'Browse / edit posts', href: `https://github.com/${REPO}/tree/main/src/content` },
+];
+---
+
+<BaseLayout title="Admin" lang="en">
+  <h1>Admin</h1>
+  <p class="meta">
+    Opens GitHub's file editor in the browser. Fill in the frontmatter (title, date, description,
+    thumbnail) and markdown body, then commit straight to main — the Pages workflow rebuilds
+    automatically.
+  </p>
+  <ul class="admin-links">
+    {
+      links.map((l) => (
+        <li>
+          <a href={l.href} target="_blank" rel="noopener">
+            {l.label}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <p class="meta">Filename: anything ending in <code>.md</code> — it becomes the URL slug. Frontmatter template:</p>
+  <pre><code>---
+title: Post title
+date: 2026-08-26
+description: One-line summary (optional)
+thumbnail: /uploads/example.jpg (optional)
+---
+
+Body in markdown.</code></pre>
+  <p class="meta">
+    Images/videos: upload separately via GitHub's "Add file → Upload files" into
+    <code>public/uploads/</code>, then reference as <code>/uploads/filename.jpg</code>.
+  </p>
+</BaseLayout>
+
+<style>
+  .admin-links {
+    list-style: none;
+    margin: 1.5rem 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .admin-links a {
+    display: block;
+    border: 1px solid var(--border);
+    padding: 0.8rem 1rem;
+    text-decoration: none;
+  }
+  .admin-links a:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+</style>

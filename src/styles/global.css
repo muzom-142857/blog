@@ -238,15 +238,13 @@ a {
 }
 
 .post-card .card-title {
-  font-family: var(--font-logo);
-  font-weight: 400;
-  font-size: 1.35rem;
-  letter-spacing: 0.01em;
+  font-weight: 600;
+  font-size: 1.15rem;
   margin: 0;
 }
 
 .post-card.featured .card-title {
-  font-size: 1.9rem;
+  font-size: 1.5rem;
 }
 
 .post-card .excerpt {
@@ -297,11 +295,13 @@ a {
   display: block;
 }
 
-html[lang='ko'] article.content {
+html[lang='ko'] article.content,
+html[lang='ko'] .post-card .card-title {
   font-family: var(--font-ko);
 }
 
-html[lang='en'] article.content {
+html[lang='en'] article.content,
+html[lang='en'] .post-card .card-title {
   font-family: var(--font-en);
 }
 
